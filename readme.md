@@ -1,6 +1,6 @@
 # eliseev.mx website
 
-yet another personal website with blog
+yet another personal website
 
 ### Usage
 

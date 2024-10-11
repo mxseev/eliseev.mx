@@ -1,6 +1,7 @@
 ---
 import type {IconDefinition} from "@fortawesome/free-brands-svg-icons"
-import FaIcon from "components/fa_icon.astro"
+
+import FaIcon from "components/system/fa_icon.astro"
 
 export type Props = {
   title: string
@@ -9,8 +10,10 @@ export type Props = {
 }
 
 const {title, href, icon} = Astro.props
+const isExtenal = href.startsWith("https://")
+const attributes = isExtenal ? {target: "_blank", rel: "noopener noreferrer"} : {}
 ---
-<a class="container" href={href} title={title} target="_blank" rel="noopener noreferrer">
+<a class="container" {...{href, title}} {...attributes}>
   <FaIcon definition={icon} class="icon" />
 </a>
 

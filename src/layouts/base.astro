@@ -4,9 +4,6 @@ import type {MarkdownLayoutProps} from "astro"
 import "@fontsource-variable/martian-mono"
 // import "@fontsource-variable/inter"
 
-import Footer from "components/footer.astro"
-import {links} from "data/links"
-
 type PropsList = {
   title: string
   description: string
@@ -34,9 +31,9 @@ const {generator} = Astro
     <main>
       <slot />
     </main>
-    <Footer links={links} class="footer" />
   </body>
 </html>
+
 <style is:global>
   @import url("styles/variables.css");
   @import url("styles/typography.css");
@@ -45,32 +42,29 @@ const {generator} = Astro
     box-sizing: border-box;
   }
 </style>
+
 <style>
-body {
-  display: flex;
-  flex-direction: column;
+  body {
+    display: flex;
+    flex-direction: column;
 
-  min-width: 480px;
-  max-width: 1024px;
-  min-height: 100vh;
-  margin: 0 auto;
-  padding: 2step 4step;
+    min-width: 480px;
+    max-width: 1024px;
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 2step 4step;
 
-  /* font-family: 'Inter Variable', sans-serif; */
-  font-family: "Martian Mono Variable", monospace;
+    /* font-family: 'Inter Variable', sans-serif; */
+    font-family: "Martian Mono Variable", monospace;
 
-  background: var(--color-background-primary);
+    background: var(--color-background-primary);
 
-  @media (--viewport-mobile) {
-    padding: 2step;
+    @media (--viewport-mobile) {
+      padding: 2step;
+    }
   }
-}
 
-main {
-  flex-grow: 1;
-}
-
-.footer {
-  margin-top: 2step ;
-}
+  main {
+    flex-grow: 1;
+  }
 </style>
