@@ -1,0 +1,19 @@
+---
+import {icon} from "@fortawesome/fontawesome-svg-core"
+import type {IconDefinition} from "@fortawesome/free-brands-svg-icons"
+
+type Props = {
+  definition: IconDefinition
+  class: string
+}
+
+const {definition, class: className, ...restProps} = Astro.props
+const cid = Object.keys(restProps).find(key => key.startsWith("data-astro-cid-"))
+const attributes = cid ? {[cid]: ""} : {}
+
+const {html} = icon(definition, {
+  classes: className,
+  attributes
+})
+---
+{html.map(node => <Fragment set:html={node} />)}

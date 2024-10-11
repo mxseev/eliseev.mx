@@ -1,0 +1,32 @@
+---
+import type {IconDefinition} from "@fortawesome/free-brands-svg-icons"
+import FaIcon from "components/fa_icon.astro"
+
+export type Props = {
+  title: string
+  href: string
+  icon: IconDefinition
+}
+
+const {title, href, icon} = Astro.props
+---
+<a class="container" href={href} title={title} target="_blank" rel="noopener noreferrer">
+  <FaIcon definition={icon} class="icon" />
+</a>
+
+<style>
+.container {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color ease 0.2s;
+
+  &:hover {
+    color: var(--color-text-primary);
+  }
+}
+
+.icon {
+  width: 24px;
+  max-height: 24px;
+}
+</style>

@@ -1,0 +1,56 @@
+html {
+  font-size: 15px;
+}
+
+body {
+  line-height: 1.8;
+  color: var(--color-text-primary);
+}
+
+p {
+  font-size: 1rem;
+}
+
+h1 {
+  margin: 4step 0 3step;
+  font-size: 2.4rem;
+}
+
+h2 {
+  margin: 3step 0 2step;
+  font-size: 2rem;
+}
+
+h3 {
+  margin: 3step 0 2step;
+  font-size: 1.4rem;
+}
+
+h4 {
+  margin: 3step 0 2step;
+  font-size: 1.2rem;
+}
+
+h5,
+h6 {
+  font-size: 1rem;
+}
+
+hr {
+  width: 100%;
+  border: none;
+  border-top: 2px dashed var(--color-border);
+}
+
+a {
+  color: var(--color-text-secondary);
+  transition: color ease 0.2s;
+
+  &:hover {
+    color: var(--color-text-primary);
+  }
+}
+
+.transparent {
+  color: transparent;
+}

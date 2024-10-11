@@ -1,0 +1,76 @@
+---
+import type {MarkdownLayoutProps} from "astro"
+
+import "@fontsource-variable/martian-mono"
+// import "@fontsource-variable/inter"
+
+import Footer from "components/footer.astro"
+import {links} from "data/links"
+
+type PropsList = {
+  title: string
+  description: string
+}
+
+export type Props = PropsList | MarkdownLayoutProps<PropsList>
+const props = "frontmatter" in Astro.props ? Astro.props.frontmatter : Astro.props
+
+const {title, description} = props
+const lang = Astro.currentLocale || "ru"
+const {generator} = Astro
+
+---
+
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={generator} />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <main>
+      <slot />
+    </main>
+    <Footer links={links} class="footer" />
+  </body>
+</html>
+<style is:global>
+  @import url("styles/variables.css");
+  @import url("styles/typography.css");
+
+  * {
+    box-sizing: border-box;
+  }
+</style>
+<style>
+body {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 480px;
+  max-width: 1024px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 2step 4step;
+
+  /* font-family: 'Inter Variable', sans-serif; */
+  font-family: "Martian Mono Variable", monospace;
+
+  background: var(--color-background-primary);
+
+  @media (--viewport-mobile) {
+    padding: 2step;
+  }
+}
+
+main {
+  flex-grow: 1;
+}
+
+.footer {
+  margin-top: 2step ;
+}
+</style>

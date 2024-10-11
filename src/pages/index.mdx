@@ -1,0 +1,99 @@
+---
+layout: layouts/base.astro
+title: Максим Елисеев
+---
+
+import Persona from "components/persona.astro";
+import Header from "components/header.astro";
+import Footer from "components/footer.astro"
+
+import ponyAvatar from "images/avatar_pony.png";
+import { links } from "data/links";
+
+<Header
+  persona={{
+    fullname: "Максим Елисеев",
+    subtitle: "Widestack разработчик 25го уровня",
+    avatar: ponyAvatar
+  }}
+  links={links}
+/>
+
+---
+
+Привет, я Максим, разработчик. 
+
+— Стоп, Widestack? А что это?  
+— Это как Fullstack, но ещё больше и шире. Вообще, обычно, такие люди уже гордо называют себя просто инженерами, но я пока стесняюсь, так что выдумал это.
+
+### Проекты
+
+import ProjectsGrid from "components/projects_grid.astro";
+import ProjectCard from "components/project_card.astro";
+
+<ProjectsGrid>
+  <ProjectCard
+    slug="overline"
+    name="Overline"
+    description="OpenConnect-совместимый сервер и клиенты. Скоро будет (возможно)"
+    gridWidth={2}
+    gridHeight={2}
+  />
+  <ProjectCard
+    slug="logram"
+    name="logram"
+    description="Утилита для отправки логов в Telegram"
+    gridWidth={1}
+    gridHeight={2}
+  />
+  <ProjectCard
+    slug="website"
+    name="eliseev.mx"
+    description="Этот сайт с блогом"
+    gridWidth={1}
+    gridHeight={2}
+  />
+</ProjectsGrid>
+
+### Посты в блоге
+
+import BlogGrid from "components/blog_grid.astro";
+import BlogPostCard from "components/blog_post_card.astro";
+import BlogAllLink from "components/blog_all_link.astro";
+
+<BlogGrid>
+  <BlogPostCard
+    slug="hellow"
+    title="Hello, world"
+    subtitle="Стартуем, я сказала СТАААРТУЕМ. Стартуем, я сказала СТАААРТУЕМ. Стартуем, я сказала СТАААРТУЕМ. "
+    viewsCount={1234}
+    tags={["css", "astro", "etc"]}
+    publishedAt={new Date()}
+  />
+  <BlogPostCard
+    slug="hellow"
+    title="Hello, world"
+    subtitle="Стартуем, я сказала СТАААРТУЕМ"
+    viewsCount={1234}
+    tags={["css", "astro", "etc"]}
+    publishedAt={new Date(2024, 8, 7)}
+  />
+  <BlogPostCard
+    slug="hellow"
+    title="Hello, world"
+    subtitle="Стартуем, я сказала СТАААРТУЕМ"
+    viewsCount={1234}
+    tags={["css", "astro", "etc"]}
+    publishedAt={new Date(2024, 4, 12)}
+  />
+  <BlogPostCard
+    slug="hellow"
+    title="Hello, world"
+    subtitle="Стартуем, я сказала СТАААРТУЕМ"
+    viewsCount={1234}
+    tags={["css", "astro", "etc"]}
+    publishedAt={new Date(2024, 2, 12)}
+  />
+  <BlogAllLink href={"/blog"}>Все 12 записей</BlogAllLink>
+
+</BlogGrid>

@@ -1,0 +1,56 @@
+---
+import Persona, {type Props as PersonaProps} from "components/persona.astro"
+import IconLink, {type Props as LinkProps} from "components/icon_link.astro"
+
+type Props = {
+  persona: PersonaProps
+  links?: LinkProps[]
+}
+
+const {persona, links} = Astro.props
+---
+
+<header class="container">
+  <Persona {...persona} />
+  {links && links.length > 0 && (
+    <ul class="links">
+      {links.map(link => (
+        <li class="item">
+          <IconLink title={link.title} href={link.href} icon={link.icon} />
+        </li>
+      ))}
+    </ul>
+  )}
+</header>
+
+<style>
+.container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin: 2step 0;
+
+  @media (--viewport-mobile) {
+    margin: 2step 0;
+  }
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  list-style: none;
+
+  & .item {
+    margin-left: 2step;
+
+    &:first-of-type {
+      margin-left: 0;
+    }
+  }
+
+  @media (--viewport-tablet) {
+    display: none;
+  }
+}
+
+</style>

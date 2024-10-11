@@ -11,14 +11,14 @@ export default {
   plugins: [
     globalData({files: [
       "./src/styles/variables.css",
-      "./src/styles/media.css",
+      "./src/styles/media.css"
     ]}),
     mediaMinmax(),
     customMedia(),
     customUnit({
       units: [{
         from: "step",
-        convert: (value) => value * STEP_BASE_VALUE + "rem"
+        convert: value => value * STEP_BASE_VALUE + "rem"
       }]
     }),
     nesting(),

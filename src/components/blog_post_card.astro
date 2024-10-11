@@ -1,0 +1,116 @@
+---
+import {differenceInDays, format, formatDistanceToNow} from "date-fns"
+import {ru, enUS} from "date-fns/locale"
+
+import TitledBlock from "components/titled_block.astro"
+
+type Props = {
+  slug: string
+  title: string
+  subtitle: string
+  publishedAt: Date
+  viewsCount: number
+  tags: string[]
+}
+
+const {slug, title, subtitle, publishedAt, viewsCount, tags} = Astro.props
+
+const locale = Astro.currentLocale === "ru" ? ru : enUS
+
+const formatPublicationDate = (input: Date) => {
+  if (differenceInDays(new Date(), input) > 15) {
+    return format(input, "d MMMM yyyy", {locale})
+  }
+
+  return formatDistanceToNow(input, {locale, addSuffix: true})
+}
+
+const formatCleanPublicationDate = (input: Date) => format(input, "dd.MM.yyyy", {locale})
+
+---
+<TitledBlock as="a" href=`/blog/${slug}` class="container">
+  <h4 slot="header" class="title">{title}</h4>
+  <div slot="content" class="content">
+    <p class="subtitle">{subtitle}</p>
+    <footer>
+      <div class="tags">
+        {tags.map(tag => <span class="tag">{tag}</span>)}
+      </div>
+      <div class="meta">
+        <div class="published-at" title={formatCleanPublicationDate(publishedAt)}>
+          <span>{formatPublicationDate(publishedAt)}</span>
+        </div>
+        <div class="view-count">
+          <span>{viewsCount} просмотров</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+</TitledBlock>
+
+<style>
+  .container {
+    display: flex;
+    flex-direction: column;
+    color: var(--color-text-primary);
+    text-decoration: none;
+  }
+
+  .title {
+    margin: 0;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .view-count,
+  .published-at {
+    display: flex;
+    align-items: center;
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+
+    & .icon {
+      width: 12px;
+      margin-right: 1step;
+    }
+  }
+
+  footer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin: auto 1step 1step;
+  }
+
+  .subtitle {
+    margin: 2step;
+  }
+
+  .tags {
+    display: flex;
+  }
+
+  .tag {
+    display: block;
+
+    margin: 0 1step 0 0;
+    padding: 0 0.6step;
+
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+
+    border: 1px solid var(--color-border);
+    border-radius: var(--roundness-semi);
+  }
+
+</style>

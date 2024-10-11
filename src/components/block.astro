@@ -1,0 +1,31 @@
+---
+/* eslint-disable no-undef */
+
+type Props<T extends keyof HTMLElementTagNameMap> = {
+  as: T
+  class?: string
+  style?: Partial<CSSStyleDeclaration>
+} & Omit<Partial<HTMLElementTagNameMap[T]>, "children" | "style">
+
+export type {Props}
+
+const {as, ...restProps} = Astro.props
+const Element = as || "div"
+---
+
+<Element class:list={["container", restProps.class]} {...restProps}>
+  <slot />
+</Element>
+
+<style>
+  .container {
+    background: var(--color-background-secondary);
+    border: solid 1px var(--color-border);
+    border-radius: var(--roundness-full);
+    transition: background ease 0.2s;
+
+    &:hover {
+      background: var(--color-background-tertiary);
+    }
+  }
+</style>

@@ -1,0 +1,72 @@
+---
+import type {ImageMetadata} from "astro"
+import {Image} from "astro:assets"
+
+export type Props = {
+  fullname: string
+  subtitle: string
+  avatar: ImageMetadata
+}
+
+const {fullname, subtitle, avatar} = Astro.props
+const alt = Astro.currentLocale === "ru" ? "Аватар" : "Avatar"
+---
+<div class="container">
+  <Image src={avatar} alt={alt} class="avatar" />
+  <div class="text">
+    <h2 class="fullname">{fullname}</h2>
+    <h4 class="subtitle">{subtitle}</h4>
+  </div>
+</div>
+
+<style>
+  .container {
+    display: flex;
+    align-items: center;
+  }
+
+  .avatar {
+    width: 100px;
+    height: auto;
+
+    background: #fff;
+    border: 2px solid var(--color-accent);
+    border-radius: 50%;
+
+    @media (--viewport-tablet) {
+      width: 90px;
+    }
+
+    @media (--viewport-mobile) {
+      width: 64px;
+    }
+  }
+
+  .text {
+    margin-left: 4step;
+
+    .fullname {
+      margin: 0;
+
+      @media (--viewport-mobile) {
+        font-size: 1.5rem;
+      }
+    }
+
+    .subtitle {
+      margin: 0;
+
+      @media (--viewport-mobile) {
+        font-size: 1rem;
+      }
+    }
+
+    @media (--viewport-tablet) {
+      margin-left: 3step;
+    }
+
+    @media (--viewport-mobile) {
+      margin-left: 2step;
+    }
+  }
+</style>
