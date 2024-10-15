@@ -43,4 +43,3 @@ jobs:
         tags: |
           ghcr.io/mxseev/eliseev.mx:latest
           ghcr.io/mxseev/eliseev.mx:${{ env.TAG }}
-          ghcr.io/mxseev/eliseev.mx:$(date +%s)
