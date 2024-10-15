@@ -1,0 +1,98 @@
+---
+layout: layouts/base.astro
+title: Max Eliseev CV
+blueBold: true
+---
+
+import {faDownload} from "@fortawesome/free-solid-svg-icons";
+
+import Persona from "components/block/persona.astro";
+import Header from "components/block/header.astro";
+import IconLink from "components/ui/icon_link.astro";
+
+import irlAvatar from "images/avatar_irl.png";
+
+<Header
+  horizontalCenterOnMobile
+  persona={{
+    avatar: irlAvatar,
+    fullname: "Max Eliseev",
+    subtitle: "Fullstack developer with 4+ years of experience",
+  }}
+>
+  <IconLink
+    icon={faDownload}
+    title="Download"
+    href="/MaxEliseevCV_en.pdf"
+    download="MaxEliseevCV_en.pdf"
+    hideContentOnMobile
+    mini
+  >
+    MaxEliseevCV_en.pdf
+  </IconLink>
+</Header>
+
+---
+
+Fullstack developer with more than 4 years of experience and very wide specialization: from frontend to infrastructure, from backend to embedded. I've passed the road from simple websites (written in Windows-notepad) to creating full-fledged web (and not only) applications.
+
+Current main stack: **Rust** / **TypeScript** / **React** / **Node**
+
+---
+
+### Basic information
+
+Languages: Russian **[native]**, English **[B2]**  
+Location: Magnitogorsk, Russia **[UTC + 5]**  
+Conditions: full-time/part-time, **remote only**
+
+---
+
+### Work experience
+
+##### **2016-2020**: studying, freelancing, starting a career
+
+I started developing back in my school years, and after a couple of years I began doing small freelance jobs (markup of simple websites, mostly).
+
+##### **2020-2022**: Middle fullstack in [gooditworks](https://goodit.works)
+
+One of the freelance orders was mini-project for gooditworks and I started working with them full-time. My favorite place of work (and sometimes life 🙂), this is where realized as a full-fledged developer. I actively participated in almost all their projects (more info about them you can find on [their site](https://goodit.works/en/projects)).
+
+##### **2022-2023**: Backend developer in [Flatsharing](https://flatsharing.biz)
+
+I was working on adapting the main backend of the Flatsharing platform for another white-label product with complex business logic. Of course, it was not just one backend, but let the official name of the position smooth out the flow of these one-type fullstacks.
+
+##### **2024 up to now**: Fullstack developer in [██████████](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+
+██████ ███████ ████████████ █████████████ █ ███████ ██████████████ ██████ █████████ ███ ████████ ████████ █████ ███████████ █████████ █████ ██████ █████████████████
+
+---
+
+### ~~Buzzwords~~ technical skills
+
+- Programming languages: **JavaScript**, **TypeScript**, **Rust** and little bit: **Dart** (Flutter), **Go**, **C**
+- Frontend frameworks: **React** (w/o **Next**), **Solid.js**, **Astro**
+  - state managers: **Redux**, **effector** and little bit **MobX[-state-tree]**
+  - bundlers: **Webpack**, **Vite**
+- Backend frameworks: **Apollo**, **Koa**, **Actix** (**hyper**, **warp**)
+- Databases: **Postgres**, **MySQL** and little bit **MongoDB**
+- Infrastructure tools: **Nginx**, **Docker** and little bit **k8s** (**k3s**)
+  - Clouds: **AWS**, **DigitalOcean**, **Google Cloud**, **Yandex Cloud**
+- Code quality tools: **ESlint**, **Stylelint**, **Commitlint**
+- Testing tools: **Jest**, **AVA**, **Playwright**
+- Embedded: **STM32 (F4)**, **RPi Silicon (RPxxxx)** и **Espressif (ESP)**
+  - RTOS: **rtic**, **embasy** and little bit **FreeRTOS**
+- Other essential tools: **git**, **Linux** (i use arch, btw)
+
+---
+
+### Opensource projects
+
+- [Overline](/en/project/overline): OpenConnect-compatible server and clients
+- [logram](/en/project/logram): Utility for sending logs to Telegram messenger
+- [base](https://github.com/gooditworks/base), [base-frontend](https://github.com/gooditworks/base-frontend), [base-fullstack](https://github.com/gooditworks/base-fullstack): gooditworks's boilerplates
+
+### Contacts
+
+- Email: [mxseev@gmail.com](mailto:mxseev@gmail.com)
+- Telegram: [@mxseev](https://t.me/mxseev)

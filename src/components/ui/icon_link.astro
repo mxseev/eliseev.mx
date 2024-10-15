@@ -1,26 +1,40 @@
 ---
+import type {HTMLAttributes} from "astro/types"
 import type {IconDefinition} from "@fortawesome/free-brands-svg-icons"
 
 import FaIcon from "components/system/fa_icon.astro"
 
-export type Props = {
-  title: string
+export type Props = HTMLAttributes<"a"> & {
   href: string
   icon: IconDefinition
+  mini?: boolean
+  hideContentOnMobile?: boolean
 }
 
-const {title, href, icon} = Astro.props
+const {slots} = Astro
+const {href, icon, mini, hideContentOnMobile, ...restProps} = Astro.props
+
+const isSlotted = slots.has("default")
 const isExtenal = href.startsWith("https://")
+
 const attributes = isExtenal ? {target: "_blank", rel: "noopener noreferrer"} : {}
+const allProps = {href, ...attributes, ...restProps}
 ---
-<a class="container" {...{href, title}} {...attributes}>
-  <FaIcon definition={icon} class="icon" />
+<a class:list={["container", {slotted: isSlotted}]} {...allProps}>
+  <FaIcon definition={icon} class:list={["icon", {mini}]} />
+  <div class:list={["content", {"mobile-hide": hideContentOnMobile}]}>
+    <slot />
+  </div>
 </a>
 
 <style>
 .container {
+  display: flex;
+  align-items: center;
+
   color: var(--color-text-secondary);
   text-decoration: none;
+
   transition: color ease 0.2s;
 
   &:hover {
@@ -31,5 +45,19 @@ const attributes = isExtenal ? {target: "_blank", rel: "noopener noreferrer"} : 
 .icon {
   width: 24px;
   max-height: 24px;
+
+  &.mini {
+    width: 20px;
+  }
+}
+
+.content.mobile-hide {
+  @media (--viewport-mobile) {
+    display: none;
+  }
+}
+
+.container.slotted .icon {
+  margin-right: 2step;
 }
 </style>

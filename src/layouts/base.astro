@@ -1,21 +1,30 @@
 ---
 import type {MarkdownLayoutProps} from "astro"
 
-import "@fontsource-variable/martian-mono"
 // import "@fontsource-variable/inter"
+// import "@fontsource-variable/roboto-mono"
+import "@fontsource-variable/martian-mono"
+
+import Footer from "components/block/footer.astro"
+
+import {links} from "data/links"
+import {names} from "data/name"
 
 type PropsList = {
   title: string
   description: string
+  blueBold?: boolean
 }
 
 export type Props = PropsList | MarkdownLayoutProps<PropsList>
 const props = "frontmatter" in Astro.props ? Astro.props.frontmatter : Astro.props
 
-const {title, description} = props
+const {title, description, blueBold} = props
 const lang = Astro.currentLocale || "ru"
 const {generator} = Astro
 
+const year = new Date().getFullYear()
+const name = names[lang]
 ---
 
 <html lang={lang}>
@@ -28,9 +37,12 @@ const {generator} = Astro
     <title>{title}</title>
   </head>
   <body>
-    <main>
+    <main class:list={[{"blue-bold": blueBold}]}>
       <slot />
     </main>
+    <Footer class="footer" links={links}>
+      {year}&nbsp;{name}
+    </Footer>
   </body>
 </html>
 
@@ -52,19 +64,35 @@ const {generator} = Astro
     max-width: 1024px;
     min-height: 100vh;
     margin: 0 auto;
-    padding: 2step 4step;
+    padding: 2step 4step 0;
 
     /* font-family: 'Inter Variable', sans-serif; */
+
+    /* font-family: "Roboto Mono Variable", monospace; */
+
     font-family: "Martian Mono Variable", monospace;
 
     background: var(--color-background-primary);
 
     @media (--viewport-mobile) {
-      padding: 2step;
+      padding: 1step 2step;
     }
   }
 
   main {
     flex-grow: 1;
+    text-align: justify;
+
+    &.blue-bold :global(strong) {
+      color: var(--color-accent);
+    }
+
+    @media (--viewport-tablet) {
+      text-align: left;
+    }
+  }
+
+  .footer {
+    margin-top: 4step;
   }
 </style>

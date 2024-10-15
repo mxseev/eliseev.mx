@@ -1,0 +1,53 @@
+---
+import type {Link} from "data/links"
+
+type Props = {
+  links: Link[]
+  class?: string
+}
+
+const {links, class: className, ...restProps} = Astro.props
+---
+<footer class:list={["container", className]} {...restProps}>
+  <slot />
+  <ul class="links">
+    {links.map(link => (
+      <li class="link">
+        <a href={link.href}>{link.title}</a>
+      </li>
+    ))}
+  </ul>
+</footer>
+
+<style>
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 1step 0;
+
+    border-top: 2px dashed var(--color-border);
+
+    @media (--viewport-mobile) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  .links {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .link {
+    margin-left: 2step;
+    text-transform: lowercase;
+
+    &:first-of-type {
+      margin-left: 0;
+    }
+  }
+</style>

@@ -3,4 +3,46 @@ layout: layouts/base.astro
 title: Максим Елисеев
 ---
 
-## almost from scratch
+import Persona from "components/block/persona.astro";
+import Header from "components/block/header.astro";
+import IconLinksRow from "components/icon_links_row.astro";
+
+import ponyAvatar from "images/avatar_pony.png";
+import {links} from "data/links";
+
+<Header
+  persona={{
+    avatar: ponyAvatar,
+    fullname: "Максим Елисеев",
+    subtitle: "Widestack разработчик 25го уровня",
+  }}
+  hideContentOnMobile
+>
+  <IconLinksRow links={links} />
+</Header>
+
+---
+
+Привет, я Максим, разработчик с очень широкой специализацией. За последние 8 лет в разработке побывал почти везде, от фронтенда до инфраструктуры, от бекенда до эмбеддеда. С полным списком знакомых базвордов и технологий можно ознакомится на [странице с резюме](/cv).
+
+_Widestack_? Ну, моя специализация уже довольно далеко ушла от обычного Fullstack'ера (инфраструктура, системщина, мобилки, эмбедедд) так что это уже не подходит. Обычно, в таких случаях просто используют гордое слово "инженер", но я пока решил, что рановато. Вот как только сделаю что-нибудь по-настоящему _инженерное_, так сразу им и назовусь. А пока пусть будет Widestack, звучит достаточно _стильно_.
+
+---
+
+## Проекты
+
+import ProjectsGrid from "components/block/projects_grid.astro";
+import ProjectCard from "components/project_card.astro";
+
+<ProjectsGrid>
+  <ProjectCard url="/project/overline" name="Overline" width={2} height={1}>
+    OpenConnect-совместимые сервер и клиенты. Скоро будет (возможно)
+  </ProjectCard>
+  <ProjectCard url="/project/logram" name="logram" width={1} height={1}>
+    Утилита для отправки логов в Telegram
+  </ProjectCard>
+  <ProjectCard url="/project/eliseev.mx" name="eliseev.mx" width={1} height={1}>
+    Этот сайт
+  </ProjectCard>
+</ProjectsGrid>
+

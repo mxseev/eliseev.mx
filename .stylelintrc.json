@@ -7,6 +7,10 @@
     "@stylistic/stylelint-config"
   ],
   "rules": {
-    "unit-no-unknown": [true, { "ignoreUnits": ["step"] }]
+    "unit-no-unknown": [true, { "ignoreUnits": ["step"] }],
+    "selector-pseudo-class-no-unknown": [
+      true,
+      { "ignorePseudoClasses": ["global"] }
+    ]
   }
 }

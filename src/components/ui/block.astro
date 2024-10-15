@@ -1,0 +1,31 @@
+---
+import type {HTMLAttributes, HTMLTag} from "astro/types"
+
+type Props<T extends HTMLTag = "div"> = {
+  as?: T
+  class?: string
+  hoverable?: boolean
+} & HTMLAttributes<T>
+
+const {as, class: className, hoverable, ...restProps} = Astro.props
+const Element = as || "div"
+---
+<Element class:list={["container", className, {hoverable}]} {...restProps}>
+  <slot />
+</Element>
+
+<style>
+  .container {
+    border: 2px solid var(--color-border);
+    border-radius: var(--roundness-full);
+
+    &.hoverable {
+      transition: background 0.2s ease;
+
+      &:hover,
+      &:focus {
+        background: var(--color-background-secondary);
+      }
+    }
+  }
+</style>

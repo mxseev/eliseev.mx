@@ -8,22 +8,23 @@ body {
 }
 
 p {
+  margin: 2step 0;
   font-size: 1rem;
 }
 
 h1 {
   margin: 4step 0 3step;
-  font-size: 2.4rem;
+  font-size: 2rem;
 }
 
 h2 {
   margin: 3step 0 2step;
-  font-size: 2rem;
+  font-size: 1.4rem;
 }
 
 h3 {
   margin: 3step 0 2step;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
 }
 
 h4 {
@@ -31,15 +32,30 @@ h4 {
   font-size: 1.2rem;
 }
 
-h5,
+h5 {
+  margin: 2step 0;
+  font-size: 1.1rem;
+}
+
 h6 {
   font-size: 1rem;
 }
 
 hr {
   width: 100%;
+  margin: 2step 0;
   border: none;
   border-top: 2px dashed var(--color-border);
+}
+
+ul {
+  padding-left: 0;
+  list-style-position: inside;
+  list-style-type: "- ";
+
+  & ul {
+    padding-left: 4step;
+  }
 }
 
 a {

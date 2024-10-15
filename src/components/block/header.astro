@@ -1,0 +1,38 @@
+---
+import Persona, {type Props as PersonaProps} from "components/block/persona.astro"
+
+type Props = {
+  persona: PersonaProps
+  hideContentOnMobile?: boolean
+  horizontalCenterOnMobile?: boolean
+}
+
+const {persona, hideContentOnMobile, horizontalCenterOnMobile} = Astro.props
+---
+<header class:list={["container", {"mobile-center": horizontalCenterOnMobile}]}>
+  <Persona {...persona} />
+  <div class:list={["content", {"mobile-hide": hideContentOnMobile}]}>
+    <slot />
+  </div>
+</header>
+
+<style>
+  .container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin: 3step 0;
+
+    &.mobile-center {
+      @media (--viewport-mobile) {
+        align-items: center;
+      }
+    }
+  }
+
+  .content.mobile-hide {
+    @media (--viewport-mobile) {
+      display: none;
+    }
+  }
+</style>

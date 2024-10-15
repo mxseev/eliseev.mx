@@ -26,6 +26,9 @@ importers:
       '@fontsource-variable/martian-mono':
         specifier: ^5.0.14
         version: 5.0.14
+      '@fontsource-variable/roboto-mono':
+        specifier: ^5.1.0
+        version: 5.1.0
       '@fortawesome/fontawesome-svg-core':
         specifier: ^6.6.0
         version: 6.6.0
@@ -517,6 +520,9 @@ packages:
 
   '@fontsource-variable/martian-mono@5.0.14':
     resolution: {integrity: sha512-YrLmwKgt9J/JcD+1G4fGqG99p+NT/HchkXv7GezeMkXU8ZRBEJeM5QCfSqplhGm8oEFQl+Yjl8jAPCEkGwezlQ==}
+
+  '@fontsource-variable/roboto-mono@5.1.0':
+    resolution: {integrity: sha512-87USlDpEi7dS/ayPXwf/08vdgJKEYxdQmuZk5kCzWBtumimdwWlA9Vh36TCtYqFC+dGgDxPX/4PJK+0lxkEd5A==}
 
   '@fortawesome/fontawesome-common-types@6.6.0':
     resolution: {integrity: sha512-xyX0X9mc0kyz9plIyryrRbl7ngsA9jz77mCZJsUkLl+ZKs0KWObgaEBoSgQiYWAsSmjz/yjl0F++Got0Mdp4Rw==}
@@ -3909,6 +3915,8 @@ snapshots:
   '@fontsource-variable/inter@5.0.20': {}
 
   '@fontsource-variable/martian-mono@5.0.14': {}
+
+  '@fontsource-variable/roboto-mono@5.1.0': {}
 
   '@fortawesome/fontawesome-common-types@6.6.0': {}
 

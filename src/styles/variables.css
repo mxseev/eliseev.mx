@@ -1,11 +1,11 @@
 :root {
   --color-text-primary: #fff;
-  --color-text-secondary: #636a72;
+  --color-text-secondary: #858e99;
   --color-background-primary: #0b0e14;
   --color-background-secondary: #0d1017;
   --color-accent: #39bae6;
   --color-border: #1e232b;
-  --roundness-full: 8px;
+  --roundness-full: 10px;
   --roundness-semi: 4px;
   --shadow: rgb(0 0 0 / 10%) 0px 4px 12px;
 }

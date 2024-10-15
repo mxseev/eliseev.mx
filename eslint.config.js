@@ -14,9 +14,10 @@ const stylisticConfig = stylistic.configs.customize({
 
 const overrides = {
   rules: {
-    "@stylistic/jsx-one-expression-per-line": ["off", {}], // bugs in astro <style>
     "@stylistic/object-curly-spacing": ["warn", "never"],
-    "@typescript-eslint/consistent-type-definitions": ["error", "type"]
+    "@typescript-eslint/consistent-type-definitions": ["error", "type"],
+    // he's bugging in astro <style> tag
+    "@stylistic/jsx-one-expression-per-line": ["off", {}]
   }
 }
 

@@ -1,19 +1,20 @@
 ---
+import type {AstroBuiltinAttributes} from "astro"
 import {icon} from "@fortawesome/fontawesome-svg-core"
 import type {IconDefinition} from "@fortawesome/free-brands-svg-icons"
 
 type Props = {
-  definition: IconDefinition
-  class: string
+  "definition": IconDefinition
+  "class"?: string
+  "class:list"?: AstroBuiltinAttributes["class:list"]
 }
 
 const {definition, class: className, ...restProps} = Astro.props
-const cid = Object.keys(restProps).find(key => key.startsWith("data-astro-cid-"))
-const attributes = cid ? {[cid]: ""} : {}
 
+const cid = Object.keys(restProps).find(key => key.startsWith("data-astro-cid-"))
 const {html} = icon(definition, {
-  classes: className,
-  attributes
+  classes: className || "",
+  attributes: cid ? {[cid]: ""} : {}
 })
 ---
 {html.map(node => <Fragment set:html={node} />)}

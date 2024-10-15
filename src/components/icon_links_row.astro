@@ -1,0 +1,30 @@
+---
+import IconLink from "components/ui/icon_link.astro"
+import type {Link} from "data/links"
+
+type Props = {
+  links: Link[]
+}
+
+const {links} = Astro.props
+---
+<ul class="container">
+  {links.map(link => (
+    <li class="link">
+      <IconLink {...link} />
+    </li>
+  ))}
+</ul>
+
+<style>
+  .container {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .link {
+    margin-left: 2step;
+  }
+</style>

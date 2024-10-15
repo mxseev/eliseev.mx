@@ -1,4 +1,4 @@
-import {defineConfig} from "astro/config"
+import {defineConfig, envField} from "astro/config"
 import node from "@astrojs/node"
 import sitemap from "@astrojs/sitemap"
 import mdx from "@astrojs/mdx"
@@ -13,5 +13,17 @@ export default defineConfig({
   i18n: {
     locales: ["ru", "en"],
     defaultLocale: "ru"
+  },
+  experimental: {
+    env: {
+      schema: {
+        LOOKING_FOR_JOB: envField.boolean({
+          context: "server",
+          access: "public",
+          optional: true,
+          default: true
+        })
+      }
+    }
   }
 })

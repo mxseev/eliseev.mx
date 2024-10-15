@@ -1,0 +1,65 @@
+---
+import {Image} from "astro:assets"
+import type {ImageMetadata} from "astro"
+
+export type Props = {
+  avatar: ImageMetadata
+  fullname: string
+  subtitle: string
+}
+
+const {avatar, fullname, subtitle} = Astro.props
+---
+<div class="container">
+  <Image src={avatar} class="avatar" alt="avatar" />
+  <div class="right-wing">
+    <h2 class="fullname">{fullname}</h2>
+    <p class="subtitle">{subtitle}</p>
+  </div>
+</div>
+
+<style>
+  .container {
+    display: flex;
+    align-items: center;
+  }
+
+  .avatar {
+    width: 96px;
+    height: auto;
+
+    background: #fff;
+    border: 2px solid var(--color-accent);
+    border-radius: 50%;
+
+    @media (--viewport-mobile) {
+      width: 80px;
+    }
+  }
+
+  .right-wing {
+    margin-left: 4step;
+
+    @media (--viewport-mobile) {
+      margin-left: 3step;
+    }
+  }
+
+  .fullname {
+    margin: 0;
+    font-size: 1.8rem;
+
+    @media (--viewport-mobile) {
+      font-size: 1.6rem;
+    }
+  }
+
+  .subtitle {
+    margin: 0;
+    font-size: 1.2rem;
+
+    @media (--viewport-mobile) {
+      font-size: 1rem;
+    }
+  }
+</style>

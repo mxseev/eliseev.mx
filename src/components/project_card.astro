@@ -1,0 +1,67 @@
+---
+import Block from "components/ui/block.astro"
+
+type Props = {
+  url: string
+  name: string
+  width: 1 | 2 | 3 | 4
+  height: 1 | 2
+}
+
+const {url, name, width, height} = Astro.props
+
+// astro css vars (define:vars) does not work there
+const style = {
+  gridColumn: `span ${width}`,
+  gridRow: `span ${height}`
+}
+---
+
+<Block class="container" as="a" href={url} style={style} hoverable>
+  <header class="header">
+    <h5 class="name">{name}</h5>
+  </header>
+  <div class="content">
+    <slot />
+  </div>
+</Block>
+
+<style>
+  .container {
+    color: var(--color-text-primary);
+    text-align: left;
+    text-decoration: none;
+  }
+
+  .header {
+    padding: 3step;
+    border-bottom: 2px solid var(--color-border);
+    transition: border-color ease 0.2s;
+  }
+
+  .name {
+    margin: 0;
+    line-height: 1;
+  }
+
+  .content {
+    padding: 0 2step;
+    color: var(--color-text-secondary);
+    transition: color ease 0.2s;
+
+    & :global(p) {
+      font-size: 0.9rem;
+    }
+  }
+
+  .container:hover {
+    .header {
+      border-color: var(--color-accent);
+    }
+
+    .content {
+      color: var(--color-text-primary);
+    }
+  }
+
+</style>

@@ -5,7 +5,7 @@ import globalData from "@csstools/postcss-global-data"
 import mediaMinmax from "@csstools/postcss-media-minmax"
 import customUnit from "postcss-custom-unit"
 
-const STEP_BASE_VALUE = 0.5
+const STEP_BASE_VALUE = 0.4
 
 export default {
   plugins: [
