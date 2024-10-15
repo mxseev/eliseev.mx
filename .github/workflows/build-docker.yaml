@@ -36,9 +36,6 @@ jobs:
     - name: Build and Push Docker Image
       uses: docker/build-push-action@v2
       with:
-        context: .
-        file: ./Dockerfile
-        target: final
         push: true
         tags: |
           ghcr.io/mxseev/eliseev.mx:latest
