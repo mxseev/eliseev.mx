@@ -1,0 +1,11 @@
+node_modules
+.git
+.gitignore
+dist
+eslint.config.js
+readme.md
+.env
+.env.example
+.stylelintrc.json
+.astro
+.vscode
