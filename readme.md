@@ -12,7 +12,7 @@ This is typical [Astro](https://astro.build) project with [MDX](https://docs.ast
 4. Build: `pnpm build`
 
 - Run development server: `pnpm develop` (yup, I don't like abbreviations)
-- Build Docker image: TODO
+- Build Docker image: as usual (`docker build ...`, server listening on port `4321`)
 
 #### Remarks
 
