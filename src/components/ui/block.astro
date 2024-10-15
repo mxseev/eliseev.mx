@@ -1,11 +1,11 @@
 ---
 import type {HTMLAttributes, HTMLTag} from "astro/types"
 
-type Props<T extends HTMLTag = "div"> = {
+type Props<T extends HTMLTag> = HTMLAttributes<T> & {
   as?: T
   class?: string
   hoverable?: boolean
-} & HTMLAttributes<T>
+}
 
 const {as, class: className, hoverable, ...restProps} = Astro.props
 const Element = as || "div"
