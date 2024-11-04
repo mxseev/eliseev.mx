@@ -1,0 +1,25 @@
+---
+type Props = {
+  statusCode: string
+  statusText: string
+}
+
+const {statusCode, statusText} = Astro.props
+---
+<div class="container">
+  <h2 class="code">{statusCode}</h2>
+  <p>{statusText}</p>
+</div>
+
+<style>
+  .container {
+    width: 100%;
+    text-align: center;
+  }
+
+  .code {
+    font-size: 5rem;
+    font-weight: 400;
+    color: var(--color-text-secondary);
+  }
+</style>

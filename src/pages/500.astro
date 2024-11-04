@@ -1,0 +1,8 @@
+---
+import Base from "layouts/base.astro"
+import FullScreenError from "components/ui/full_screen_error.astro"
+
+---
+<Base title="Internal server error">
+  <FullScreenError statusCode="500" statusText="Internal server error" />
+</Base>
