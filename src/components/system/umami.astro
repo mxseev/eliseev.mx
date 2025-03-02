@@ -1,0 +1,5 @@
+---
+import {UMAMI_HOST, UMAMI_WEBSITE_ID} from "astro:env/server"
+
+---
+{UMAMI_HOST && UMAMI_WEBSITE_ID && <script is:inline async src={`${UMAMI_HOST}/script.js`} data-website-id={UMAMI_WEBSITE_ID} />}

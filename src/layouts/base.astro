@@ -1,11 +1,9 @@
 ---
 import type {MarkdownLayoutProps} from "astro"
 
-// import "@fontsource-variable/inter"
-// import "@fontsource-variable/roboto-mono"
 import "@fontsource-variable/martian-mono"
 
-import Plausible from "components/system/plausible.astro"
+import UmamiTracker from "components/system/umami.astro"
 import Footer from "components/block/footer.astro"
 
 import {links} from "data/links"
@@ -37,7 +35,7 @@ const name = names[lang]
     <meta name="description" content={description} />
     <meta name="theme-color" content="#0b0e14" />
     <title>{title}</title>
-    <Plausible />
+    <UmamiTracker />
   </head>
   <body>
     <main class:list={[{"blue-bold": blueBold}]}>

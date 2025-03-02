@@ -16,12 +16,9 @@ export default defineConfig({
   },
   env: {
     schema: {
-      LOOKING_FOR_JOB: envField.boolean({
-        context: "server",
-        access: "public",
-        optional: true,
-        default: true
-      })
+      UMAMI_HOST: envField.string({context: "server", access: "public", optional: true, default: undefined}),
+      UMAMI_WEBSITE_ID: envField.string({context: "server", access: "public", optional: true, default: undefined}),
+      LOOKING_FOR_JOB: envField.boolean({context: "server", access: "public", optional: true, default: true})
     }
   }
 })
