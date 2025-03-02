@@ -14,16 +14,14 @@ export default defineConfig({
     locales: ["ru", "en"],
     defaultLocale: "ru"
   },
-  experimental: {
-    env: {
-      schema: {
-        LOOKING_FOR_JOB: envField.boolean({
-          context: "server",
-          access: "public",
-          optional: true,
-          default: true
-        })
-      }
+  env: {
+    schema: {
+      LOOKING_FOR_JOB: envField.boolean({
+        context: "server",
+        access: "public",
+        optional: true,
+        default: true
+      })
     }
   }
 })
