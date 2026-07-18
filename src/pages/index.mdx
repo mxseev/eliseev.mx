@@ -3,18 +3,18 @@ layout: layouts/base.astro
 title: Максим Елисеев
 ---
 
-import Persona from "components/block/persona.astro";
-import Header from "components/block/header.astro";
-import IconLinksRow from "components/icon_links_row.astro";
+import Persona from "components/block/persona.astro"
+import Header from "components/block/header.astro"
+import IconLinksRow from "components/icon_links_row.astro"
 
-import ponyAvatar from "images/avatar_pony.png";
-import {links} from "data/links";
+import ponyAvatar from "images/avatar_pony.png"
+import {links} from "data/links"
 
 <Header
   persona={{
     avatar: ponyAvatar,
     fullname: "Максим Елисеев",
-    subtitle: "Widestack разработчик 25го уровня",
+    subtitle: "Widestack разработчик 27го уровня"
   }}
   hideContentOnMobile
 >
@@ -27,7 +27,7 @@ import {links} from "data/links";
 
 _Widestack_? Ну, моя специализация уже довольно далеко ушла от обычного Fullstack'ера (инфраструктура, системщина, мобилки, эмбедедд) так что это уже не подходит. Обычно, в таких случаях просто используют гордое слово "инженер", но я пока решил, что рановато. Вот как только сделаю что-нибудь по-настоящему _инженерное_, так сразу им и назовусь. А пока пусть будет Widestack, звучит достаточно _стильно_.
 
-{/* 
+{/*
 ## Проекты
 
 import ProjectsGrid from "components/block/projects_grid.astro";

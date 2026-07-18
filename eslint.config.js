@@ -24,7 +24,8 @@ const mdxConfig = {
     ...mdx.flat.rules,
     "@stylistic/indent": "off",
     "@stylistic/jsx-closing-bracket-location": "off",
-    "@stylistic/jsx-tag-spacing": "off"
+    "@stylistic/jsx-tag-spacing": "off",
+    "@stylistic/no-trailing-spaces": "off"
   }
 }
 
@@ -34,6 +35,7 @@ const overrides = {
     "@typescript-eslint/consistent-type-definitions": ["error", "type"],
     // he's bugging in astro <style> tag
     "@stylistic/jsx-one-expression-per-line": ["off", {}]
+
   }
 }
 
