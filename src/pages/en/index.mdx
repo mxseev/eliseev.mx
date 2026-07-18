@@ -3,19 +3,18 @@ layout: layouts/base.astro
 title: Max Eliseev
 ---
 
+import Persona from "components/block/persona.astro"
+import Header from "components/block/header.astro"
+import IconLinksRow from "components/icon_links_row.astro"
 
-import Persona from "components/block/persona.astro";
-import Header from "components/block/header.astro";
-import IconLinksRow from "components/icon_links_row.astro";
-
-import ponyAvatar from "images/avatar_pony.png";
-import {links} from "data/links";
+import ponyAvatar from "images/avatar_pony.png"
+import {links} from "data/links"
 
 <Header
   persona={{
     avatar: ponyAvatar,
     fullname: "Max Eliseev",
-    subtitle: "Widestack developer",
+    subtitle: "Widestack developer"
   }}
   hideContentOnMobile
 >
@@ -28,7 +27,7 @@ Hi, I'm Max, a developer with a very wide specialization. Over the last 8 years 
 
 *Widestack*? Well, my specialization is pretty far away from the casual web Fullstack (infrastructure, mobile, system things, embedded) so it doesn't fit anymore. Usually, normal people just use the proud word "engineer" for such cases, but, IMHO, it's a bit early. As soon as I make something really *engineering*, I'll call myself an engineer. For now, let it be Widestack, it sounds quite *cool*.
 
-{/* 
+{/*
 ## Projects
 
 import ProjectsGrid from "components/block/projects_grid.astro";

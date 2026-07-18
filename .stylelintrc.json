@@ -7,6 +7,11 @@
     "@stylistic/stylelint-config"
   ],
   "rules": {
+    "declaration-property-value-no-unknown": [true, {
+      "ignoreProperties": {
+        "/.*/": ["/.*step.*/"]
+      }
+    }],
     "unit-no-unknown": [true, { "ignoreUnits": ["step"] }],
     "selector-pseudo-class-no-unknown": [
       true,
