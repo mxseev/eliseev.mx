@@ -3,25 +3,30 @@
 
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-  outputs = {self, nixpkgs, ...}: let
+  outputs = {self, nixpkgs}: let
+    inherit (nixpkgs) lib;
+
     supportedSystems = ["x86_64-linux" "aarch64-linux"];
-    forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
+    forAllSystems = lib.genAttrs supportedSystems;
+    nixpkgsFor = system: nixpkgs.legacyPackages.${system};
+
+    packageJson = builtins.fromJSON (builtins.readFile ./package.json);
+    source = lib.cleanSourceWith {
+      src = ./.;
+      filter = path: type:
+        !(type == "directory" && builtins.elem (baseNameOf path) [
+          ".astro"
+          ".git"
+          "dist"
+          "node_modules"
+          "result"
+        ]) && !(builtins.elem (baseNameOf path) [".env" ".env.production"]);
+    };
   in {
     packages = forAllSystems (system: let
-      pkgs = nixpkgs.legacyPackages.${system};
-      packageJson = builtins.fromJSON (builtins.readFile ./package.json);
+      pkgs = nixpkgsFor system;
+      nodejs = pkgs.nodejs_22;
       pnpm = pkgs.pnpm_10;
-      source = pkgs.lib.cleanSourceWith {
-        src = ./.;
-        filter = path: type:
-          !(type == "directory" && builtins.elem (baseNameOf path) [
-            ".astro"
-            ".git"
-            "dist"
-            "node_modules"
-            "result"
-          ]) && !(builtins.elem (baseNameOf path) [".env" ".env.production"]);
-      };
       pnpmDeps = pkgs.fetchPnpmDeps {
         pname = packageJson.name;
         inherit (packageJson) version;
@@ -30,16 +35,13 @@
         fetcherVersion = 4;
         hash = "sha256-VHm7rcIc20Vk/knH/tmV+HA8BD2AE/byZWi7BpT1qOU=";
       };
-    in rec {
-      default = website;
-
       website = pkgs.stdenv.mkDerivation {
         pname = packageJson.name;
         inherit (packageJson) version;
         src = source;
 
         nativeBuildInputs = [
-          pkgs.nodejs_22
+          nodejs
           pnpm
           pkgs.pnpmConfigHook
           pkgs.makeWrapper
@@ -58,7 +60,7 @@
 
           mkdir -p $out/lib/eliseev-mx $out/bin
           cp -r dist node_modules $out/lib/eliseev-mx/
-          makeWrapper ${pkgs.nodejs_22}/bin/node $out/bin/eliseev-mx \
+          makeWrapper ${nodejs}/bin/node $out/bin/eliseev-mx \
             --add-flags "$out/lib/eliseev-mx/dist/server/entry.mjs" \
             --set-default HOST 0.0.0.0 \
             --set-default PORT 4321
@@ -72,6 +74,9 @@
           platforms = supportedSystems;
         };
       };
+    in {
+      default = website;
+      inherit website;
     });
 
     nixosModules.default = {config, lib, pkgs, ...}: let
@@ -115,7 +120,7 @@
     };
 
     devShells = forAllSystems (system: let
-      pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = nixpkgsFor system;
     in {
       default = pkgs.mkShell {
         packages = [pkgs.nodejs_22 pkgs.pnpm_10];
